@@ -1,0 +1,237 @@
+//stringTimes
+public String stringTimes(String str, int n) {
+  String res="";
+  
+  while(n-->0){
+    res+=str;
+  }
+  return res;
+}
+
+//frontTimes
+public String frontTimes(String str, int n) {
+  String front="";
+  
+  if(str.length()<3){
+    front=str;
+  }else{
+    front=str.substring(0,3);
+  }
+  
+  String res="";
+  while(n-->0){
+    res+=front;
+  }
+  
+  return res;
+}
+
+
+//countXX
+int countXX(String str) {
+  int count=0;
+  
+  for(int i=0;i<str.length()-1;i++){
+    if(str.substring(i,i+2).equals("xx")){
+      count++;
+    }
+  }
+  return count;
+}
+
+
+//doubleXX
+boolean doubleX(String str) {
+  int index=str.indexOf("x");
+  
+  if(index<=str.length()-2 && str.charAt(index+1)=='x') return true;
+  return false;
+}
+
+
+//stringBits
+public String stringBits(String str) {
+  String res="";
+  
+  for(int i=0;i<str.length();i+=2){
+    res+=str.charAt(i);
+  }
+  
+  return res;
+}
+
+
+//stringSplosion
+public String stringSplosion(String str) {
+  String res="";
+  
+  for(int i=0;i<str.length();i++){
+    res+=str.substring(0,i+1);
+  }
+  
+  return res;
+}
+
+
+//last2
+public int last2(String str) {
+  if(str.length()<=2){
+    return 0;
+  }
+  
+  String last=str.substring(str.length()-2);
+  int count=0;
+  
+  for(int i=0;i<str.length()-2;i++){
+    String sub=str.substring(i,i+2);
+    if(sub.equals(last)){
+      count++;
+    }
+  }
+  return count;
+}
+
+
+//arrayCount9
+public int arrayCount9(int[] nums) {
+  int count=0;
+  
+  for(int i:nums){
+    if(i==9) count++;
+  }
+  
+  return count;
+}
+
+
+//arrayFront9
+public boolean arrayFront9(int[] nums) {
+  int min=Math.min(nums.length,4);
+  
+  
+  for(int i=0;i<min;i++){
+    if(nums[i]==9) return true;
+  }
+  
+  return false;
+}
+
+
+//array123
+public boolean array123(int[] nums) {
+  for(int i=0;i<nums.length-2;i++){
+    if(nums[i]==1 && nums[i+1]==2 && nums[i+2]==3){
+      return true;
+    }
+  }
+  return false;
+}
+
+
+//stringMatch
+public int stringMatch(String a, String b) {
+  int count=0;
+  
+  int min=Math.min(a.length(),b.length());
+  
+  for(int i=0;i<min-1;i++){
+    if(a.substring(i,i+2).equals(b.substring(i,i+2))) count++;
+  }
+  
+  return count;
+}
+
+
+//stringX
+public String stringX(String str) {
+  String res="";
+  
+  for(int i=0;i<str.length();i++){
+    if(str.charAt(i)=='x'){
+      if(i==0 || i==str.length()-1){
+        res+=str.charAt(i);
+      }else{
+        continue;
+      }
+    }else{
+      res+=str.charAt(i);
+    }
+  }
+  
+  return res;
+}
+
+
+//altPairs
+public String altPairs(String str) {
+  String res="";
+  
+  int count=0;
+  for(int i=0;i<str.length();i++){
+    res+=str.charAt(i);
+    count++;
+    
+    if(count==2){
+      i+=2;
+      count=0;
+    }
+  }
+  
+  return res;
+}
+
+
+//stringYak
+public String stringYak(String str) {
+  String res="";
+  
+  for(int i=0;i<str.length();i++){
+    if(i+2<str.length() && str.charAt(i)=='y' && str.charAt(i+2)=='k'){
+      i=i+2;
+    }else{
+      res+=str.charAt(i);
+    }
+  }
+  
+  return res;
+}
+
+
+//array667
+public int array667(int[] nums) {
+  int count=0;
+  
+  for(int i=0;i<nums.length-1;i++){
+    if(nums[i]==6){
+      if(nums[i+1]==6 || nums[i+1]==7){
+        count++;
+      }
+    }
+  }
+  
+  return count;
+}
+
+
+//noTriples
+public boolean noTriples(int[] nums) {
+  for(int i=0;i<nums.length-2;i++){
+    if(nums[i]==nums[i+1] && nums[i+1]==nums[i+2]){
+      return false;
+    }
+  }
+  
+  return true;
+}
+
+
+//has271
+public boolean has271(int[] nums) {
+  for(int i=0;i+2<nums.length;i++){
+    if(nums[i]+5==nums[i+1] && Math.abs(nums[i+2]-(nums[i]-1))<=2){
+      return true;
+    }
+  }
+  return false;
+}
+

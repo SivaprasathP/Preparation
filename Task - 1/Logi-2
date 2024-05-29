@@ -1,0 +1,160 @@
+//makeBricks
+public boolean makeBricks(int small, int big, int goal) {
+  //first finish the flase cases
+  
+  if(goal>big*5+small) return false;
+  
+  //no of small bricks less than the extra length,like if goal is 18 and you have only 1 small brick means it won't be formed
+  if(goal%5>small) return false;
+  
+  return true;
+}
+
+//loneSum
+public int loneSum(int a, int b, int c) {
+  int sum=0;
+  if(a!=b && a!=c){
+    sum+=a;
+  }
+  
+  if(b!=c && b!=a){
+    sum+=b;
+  }
+  
+  if(c!=a && c!=b){
+    sum+=c;
+  }
+  
+  return sum;
+}
+
+//luckysum
+public int luckySum(int a, int b, int c) {
+  int sum=0;
+  
+  if(a==13){
+    return sum;
+  }else{
+    sum+=a;
+  }
+  
+  if(b==13){
+    return sum;
+  }else{
+    sum+=b;
+  }
+  
+  if(c==13){
+    return sum;
+  }else{
+    sum+=c;
+  }
+  
+  return sum;
+}
+
+//noTeenSum
+public int noTeenSum(int a, int b, int c) {
+  int sum=0;
+  
+  if(a<13 || a>19 || a==15 || a==16){
+    sum+=a;
+  }
+  
+  if(b<13 || b>19 || b==15 || b==16){
+    sum+=b;
+  }
+  
+  if(c<13 || c>19 || c==15 || c==16){
+    sum+=c;
+  }
+  
+  return sum;
+}
+
+//roundSum
+public int roundSum(int a, int b, int c) {
+  return round10(a)+round10(b)+round10(c);
+}
+
+public int round10(int num) {
+  int remainder = num % 10;
+  num -= remainder;
+  if (remainder >= 5) {
+    num += 10;
+  }
+  return num;
+}
+
+//closeFar
+public boolean closeFar(int a, int b, int c) {
+  //one close and other 2 be far
+  boolean c1=Math.abs(b-a)<=1 && Math.abs(b-c)>=2 && Math.abs(a-c)>=2;
+  boolean c2=Math.abs(c-a)<=1 && Math.abs(b-c)>=2 && Math.abs(a-b)>=2;
+  
+  return c1 || c2;
+}
+
+//blackJack
+public int blackjack(int a, int b) {
+  if(a>21 && b>21){
+    return 0;
+  }
+  
+  int d1=21-a,d2=21-b;
+  
+  if(d1<0){
+    return b;
+  }else if(d2<0){
+    return a;
+  }
+  
+  if(d1<d2){
+    return a;
+  }
+  
+  return b;
+}
+
+//evenlySpaced
+public boolean evenlySpaced(int a, int b, int c) {
+  //first change them into strictly increasing
+  
+  if(a>b){
+    int temp=a;
+    a=b;
+    b=temp;
+  }
+  
+  if(b>c){
+    int temp=b;
+    b=c;
+    c=temp;
+  }
+  
+  //once again compare a and b ,since b and c are swapped
+  if(a>b){
+    int temp=a;
+    a=b;
+    b=temp;
+  }
+  
+  int d1=Math.abs(b-a);
+  int d2=Math.abs(c-b);
+  
+  return d1==d2;
+}
+
+//makeChocolate
+public int makeChocolate(int small, int big, int goal) {
+  //same as makebricks problem
+  
+  //find the minimum big bricks needed to satisfy goal
+  
+  int x=Math.min(big,goal/5);
+  goal-=x*5;
+  
+  if(goal<=small) return goal;
+  
+  return -1;
+}

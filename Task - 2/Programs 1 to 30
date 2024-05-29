@@ -1,0 +1,827 @@
+//1
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		char c=in.next().charAt(0);
+		
+		for(char i=c;i<='Z';i++){
+		    System.out.print(i);
+		}
+	}
+}
+
+//2
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int x=in.nextInt();
+		int y=in.nextInt();
+		
+		int resultAnd=x&y;
+		System.out.println("Bitwise AND "+x+" and "+y+" : "+ resultAnd);
+		
+		int resultOr=x|y;
+		System.out.println("Bitwise OR "+x+" and "+y+" : "+ resultOr);
+		
+		int resultXor=x^y;
+		System.out.println("Bitwise XOR "+x+" and "+y+" : "+ resultXor);
+		
+		int leftShift=x<<1;
+		System.out.println("Left Shift of "+x+" by 1 : "+ leftShift);
+		
+		int rightShift=x>>1;
+		System.out.println("Right Shift of "+x+" by 1 : "+ rightShift);
+	}
+}
+
+
+//3
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		System.out.print("Total Number of students : ");
+		int n=in.nextInt();
+		
+		int start=100,end=start+n;
+		
+		for(int i=1;i<=4;i++){
+		    System.out.println("Group "+i);
+		   for(int j=start+i;j<=end;j+=4){
+		       System.out.println(j);
+		   }
+		   System.out.println();
+		}
+	}
+}
+
+
+//4
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		double d=in.nextDouble();
+		
+		System.out.printf("%.2f",d);
+	}
+}
+
+
+//5
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		
+		System.out.println("Enter the coefficient of x^2 :");
+		int a=in.nextInt();
+		
+		System.out.println("Enter the coefficient of x :");
+		int b=in.nextInt();
+		
+		System.out.println("Enter the constant :");
+		int c=in.nextInt();
+		
+		int x1=0,x2=0;
+		
+		x1=-b + (int)Math.sqrt((b*b)-4*a*c);
+		x1=x1/(2*a);
+		
+		x2=-b - (int)Math.sqrt((b*b)-4*a*c);
+		x2=x2/(2*a);
+		
+		System.out.println("The roots are "+x1+","+x2);
+	}
+}
+
+
+//6
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		
+		int x=in.nextInt();
+		int a=x;//a=3
+		int y=in.nextInt();
+		int b=y;//b=5
+		
+		//++a - b--
+		//++a=4 ,b--=(since postfix b's value in this expression will be 5)
+		//4 - 5=-1
+		
+		int res=0;
+		res=++a - b--;
+		System.out.println("++a - b--="+res);
+		
+		a=x;
+		b=y;
+		//a%b++
+		//a=3 ,b++=5(as postfix)
+		//3%5=3
+		res=a%b++;
+		System.out.println("a%b++="+res);
+		
+		a=x;
+		b=y;
+		//a*=b+5 -> a=a*(b+5);
+		//a=3*(5+5) -> a=30;
+		a*=b+5;
+		System.out.println("a*=b+5 is "+a);
+		
+		//x=69>>>2
+		//>>> - Bitwise Zero Fill Right Shift Operator
+		
+		//69-1000101
+		//69>>>2 -> 10001=17
+		
+		a=69>>>2;
+		System.out.println("a=69>>>2 is "+a);
+
+
+	}
+}
+
+
+//7
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int a=28;
+		
+		a+=a++ + ++a + --a + a--;
+		
+		// a=a + a++ + ++a + --a + a--
+		// a=28 + 28(29) + 30 + 29 + 29 (28)
+		//therefore a=144
+		
+		System.out.println(a);
+	}
+}
+
+
+//8
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		char c=in.next().charAt(0);
+		
+                //ASCII value of character
+		int val=(int)c;
+		System.out.println(val);
+	}
+}
+
+//9
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		int rev=0;
+		
+		while(n>0){
+		    rev=rev*10+n%10;
+		    n=n/10;
+		}
+		
+		System.out.println(rev);
+	}
+}
+
+
+//10
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		String str=in.nextLine();
+		
+		System.out.println(rev(str));
+	}
+	
+	public static String rev(String s){
+	    int index=s.indexOf(" ");
+	    
+	    if(index==-1){
+	        return s;
+	    }
+	    
+	    return rev(s.substring(index+1)) +" "+ s.substring(0,index);
+	} 
+}
+
+
+//11
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		String str=in.next();
+		
+		String res="";
+		for(int i=0;i<str.length();i++){
+		    int index=i+1;
+		    while(index<str.length() && Character.isDigit(str.charAt(index))){
+		        index++;
+		    }
+		    
+		    int count=Integer.parseInt(str.substring(i+1,index));
+		    
+		    for(int j=1;j<=count;j++){
+		        res+=str.charAt(i);
+		    }
+		    
+		    i=index-1;
+		}
+		
+		System.out.println(res);
+	}
+}
+
+
+
+//12
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		char c=in.next().charAt(0);
+		
+		System.out.println(Character.isLetter(c));
+		
+		boolean res=(c>='a' && c<='z') || (c>='A' && c<='Z');
+		System.out.println(res);
+		
+	}
+}
+
+
+//13
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		int[] arr=new int[n];
+		for(int i=0;i<n;i++){
+		    arr[i]=in.nextInt();
+		}
+		
+		int min=Integer.MAX_VALUE;
+		for(int i:arr){
+		    min=Math.min(i,min);
+		}
+		
+		System.out.println(min);
+		
+	}
+}
+
+//14
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		int[] oldArr=new int[n];
+		for(int i=0;i<n;i++){
+		    oldArr[i]=in.nextInt();
+		}
+		
+		int[] newArr=new int[n];
+		for(int i=0;i<n;i++){
+		    newArr[i]=oldArr[i];
+		}
+		
+		System.out.println(Arrays.toString(newArr));
+		
+	}
+}
+
+
+//15
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		int[] arr=new int[n];
+		for(int i=0;i<n;i++){
+		    arr[i]=in.nextInt();
+		}
+		
+		Map<Integer,Integer> map=new HashMap<>();
+		for(int i:arr){
+		    map.put(i,map.getOrDefault(i,0)+1);
+		}
+		
+		for(int i:map.keySet()){
+		    if(map.get(i)>1){
+		        System.out.print(i+" ");
+		    }
+		}
+		
+	}
+}
+
+
+//16
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n1=in.nextInt();
+		int[] arr1=new int[n1];
+		
+		for(int i=0;i<n1;i++){
+		    arr1[i]=in.nextInt();
+		}
+		
+		int n2=in.nextInt();
+		int[] arr2=new int[n2];
+		
+		for(int i=0;i<n2;i++){
+		    arr2[i]=in.nextInt();
+		}
+		
+		int[] res=new int[n1+n2];
+		int i=0,j=0,k=0;
+		
+		while(i<n1 && j<n2){
+		    if(arr1[i]==arr2[j]){
+		        res[k++]=arr1[i];
+		        i++;
+		        j++;
+		    }
+		    
+		    if(arr1[i]<arr2[j]){
+		        res[k++]=arr1[i++];
+		    }else if(arr2[j]<arr1[i]){
+		        res[k++]=arr2[j++];
+		    }
+		}
+		
+		while(i<n1){
+		    res[k++]=arr1[i++];
+		}
+		
+		while(j<n2){
+		    res[k++]=arr2[j++];
+		}
+		
+		System.out.println(Arrays.toString(res));
+	}
+}
+
+
+//17
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		int[] arr=new int[n];
+		
+		//given array is already sorted
+		for(int i=0;i<n;i++){
+		    arr[i]=in.nextInt();
+		}
+		
+		//performing alternate sorting
+		int[] res=new int[n];
+		
+		int index=arr.length-1;
+		for(int i=0;i<n;i+=2){
+		    res[i]=arr[index--];
+		}
+		
+		index=0;
+		for(int i=1;i<n;i+=2){
+		    res[i]=arr[index++];
+		}
+		
+		System.out.println(Arrays.toString(res));
+	}
+}
+
+
+//18
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		int[] arr=new int[n];
+		
+		for(int i=0;i<n;i++){
+		    arr[i]=in.nextInt();
+		}
+		
+		//sorting even positions in ascending using bubble sorting
+		for(int i=1;i<arr.length;i+=2){
+		    for(int j=1;j+2<arr.length-i;j+=2){
+		        if(arr[j]>arr[j+2]){
+		            int temp=arr[j];
+		            arr[j]=arr[j+2];
+		            arr[j+2]=temp;
+		        }
+		    }
+		}
+		
+		//sorting odd positions in descending using bubble sorting
+		for(int i=0;i<arr.length;i+=2){
+		    for(int j=0;j+2<arr.length-i;j+=2){
+		        if(arr[j]<arr[j+2]){
+		            int temp=arr[j];
+		            arr[j]=arr[j+2];
+		            arr[j+2]=temp;
+		        }
+		    }
+		}
+		
+		
+		System.out.println(Arrays.toString(arr));
+	}
+}
+
+
+//19
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int row=in.nextInt();
+		int col=in.nextInt();
+		int[][] arr=new int[row][col];
+		
+		for(int i=0;i<row;i++){
+		    for(int j=0;j<col;j++){
+		        arr[i][j]=in.nextInt();
+		    }
+		}
+		
+		//left rotate
+		for(int r=0;r<row;r++){
+		    int temp=0;
+		    for(int c=0;c<col-1;c++){
+		        if(c==0){
+		           temp=arr[r][c]; 
+		        }
+		        
+		        arr[r][c]=arr[r][c+1];
+		    }
+		    arr[r][col-1]=temp;
+		}
+		
+		for(int[] i:arr){
+		   System.out.println(Arrays.toString(i));
+		}
+	}
+}
+
+
+//20
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		for(int i=1;i<=n;i++){
+		    for(int space=1;space<=n-i;space++){
+		        System.out.print(" ");
+		    }
+		    
+		    for(int j=1;j<=i;j++){
+		        System.out.print(j);
+		    }
+		    
+		    for(int j=i-1;j>=1;j--){
+		        System.out.print(j);
+		    }
+		    
+		    System.out.println();
+		}
+	}
+}
+
+
+//21
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		for(int i=0;i<n;i++){
+		    for(int space=1;space<=n-i-1;space++){
+		        System.out.print(" ");
+		    }
+		    
+		    for(int j=n-i;j<=n;j++){
+		        System.out.print(j);
+		    }
+		    
+		    for(int j=n-1;j>=n-i;j--){
+		        System.out.print(j);
+		    }
+		    
+		    System.out.println();
+		}
+	}
+}
+
+
+//22
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		for(int i=0;i<n;i++){
+		    for(int space=0;space<i;space++){
+		        System.out.print(" ");
+		    }
+		    
+		    for(int j=0;j<n-i;j++){
+		        System.out.print("* ");
+		    }
+		    
+		    System.out.println();
+		}
+	}
+}
+
+
+//23
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		for(int i=n;i>0;i--){
+		    for(int space=0;space<=n-i;space++){
+		        System.out.print(" ");
+		    }
+		    
+		    for(int j=0;j<i;j++){
+		        System.out.print(i+" ");
+		    }
+		    
+		    System.out.println();
+		}
+	}
+}
+
+
+//24
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		int val=1;
+		
+		//spaces needed
+		int space=1;
+		while(space*(space+1)<(2*n)){
+		    space++;
+		}
+		
+		for(int i=1;i<n;i++){
+		    for(int s=1;s<space-i+1;s++){
+		        System.out.print(" ");
+		    }
+		    for(int j=1;j<=i;j++){
+		        if(val>n){
+		            break;
+		        }
+		        System.out.print(val+" ");
+		        val++;
+		    }
+		    System.out.println();
+		}
+	}
+}
+
+
+//25
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		String s=in.next();
+		
+		int x=0,y=s.length()-1;
+		for(int i=0;i<s.length();i++){
+		    for(int j=0;j<s.length();j++){
+		        if(x==y && x==j){
+		            System.out.print(s.charAt(x));
+		        }else if(x==j){
+		            System.out.print(s.charAt(x));
+		        }else if(y==j){
+		            System.out.print(s.charAt(y));
+		        }else{
+		            System.out.print(" ");
+		        }
+		    }
+		    x++;y--;
+		    System.out.println();
+		}
+	}
+}
+
+
+//26
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		for(int i=0;i<n;i++){
+		    for(int j=0;j<n-i;j++){
+		        System.out.print("*");
+		    }
+		    
+		    for(int j=0;j<i*2;j++){
+		        System.out.print("_");
+		    }
+		    
+		    for(int j=0;j<n-i;j++){
+		        System.out.print("*");
+		    }
+		    
+		    System.out.println();
+		}
+		
+		for(int i=n-2;i>=0;i--){
+		    for(int j=0;j<n-i;j++){
+		        System.out.print("*");
+		    }
+		    
+		    for(int j=0;j<i*2;j++){
+		        System.out.print("_");
+		    }
+		    
+		    for(int j=0;j<n-i;j++){
+		        System.out.print("*");
+		    }
+		    
+		    System.out.println();
+		}
+	}
+}
+
+
+//27
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		String s1=in.next();
+		String s2=in.next();
+		
+		System.out.println(s1.indexOf(s2));
+	}
+}
+
+
+//28
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		System.out.println("Input the number of terms : ");
+		int n=in.nextInt();
+		
+		int num=0,sum=0;
+		for(int i=1;i<=n;i++){
+		    num=num*10+1;
+		    sum+=num;
+		    
+		    if(i!=n){
+		        System.out.print(num + " + ");
+		    }else{
+		        System.out.println(num);
+		    }
+		}
+		
+		System.out.print("The Sum is :"+sum);
+	}
+}
+
+
+//29
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		for(int i=1;i<=n;i++){
+		    if(i==1 || i==n){
+		        for(int j=1;j<=n;j++){
+		            System.out.print("*");
+		        }
+		    }else{
+		        System.out.print("*");
+		    }
+		    
+		    System.out.println();
+		}
+	}
+}
+
+
+//30
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		int n=in.nextInt();
+		
+		int[][] arr=new int[n][n];
+		for(int i=0;i<n;i++){
+		    for(int j=0;j<n;j++){
+		        arr[i][j]=in.nextInt();
+		    }
+		}
+		
+		ArrayList<ArrayList<Integer>> res=new ArrayList<>();
+		
+		int end=0;
+		for(int i=0;i<n;i++){
+		    ArrayList<Integer> inner=new ArrayList<>();
+		    
+		    int x=0,y=end;
+		    
+		    while(x<=end && y>=0){
+		        inner.add(arr[x][y]);
+		        x++;
+		        y--;
+		    }
+		    end++;
+		    System.out.println(inner.toString());
+		}
+		
+		end=n-1;
+		for(int i=1;i<=n-1;i++){
+		    ArrayList<Integer> inner=new ArrayList<>();
+		    
+		    int x=i,y=end;
+		    
+		    while(x<=end && y>=0){
+		        inner.add(arr[x][y]);
+		        x++;
+		        y--;
+		    }
+
+		    System.out.println(inner.toString());
+		}
+		
+	}
+}

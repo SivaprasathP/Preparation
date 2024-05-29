@@ -1,0 +1,202 @@
+//countYZ
+public int countYZ(String str) {
+  int count=0;
+  
+  str=str.toLowerCase();
+  
+  for(int i=0;i<str.length()-1;i++){
+    if(str.charAt(i+1)<'a' || str.charAt(i+1)>'z'){
+      if(str.charAt(i)=='y' || str.charAt(i)=='z'){
+        count++;
+      }
+    }
+  }
+  
+  if(str.charAt(str.length()-1)=='y' || str.charAt(str.length()-1)=='z') count++;
+  
+  return count;
+}
+
+
+//withoutString
+public String withoutString(String base, String remove) {
+  while(base.toLowerCase().contains(remove.toLowerCase())){
+    String temp=base.toLowerCase();
+    String r=remove.toLowerCase();
+    int index=temp.indexOf(r);
+    
+    base=base.substring(0,index)+base.substring(index+remove.length());
+  }
+  
+  return base;
+}
+
+
+//equalIsNot
+public boolean equalIsNot(String str) {
+  int s=0,n=0;
+  
+  String temp1=str;
+  
+  while(temp1.contains("is")){
+    int index=temp1.indexOf("is");
+    
+    s++;
+    temp1=temp1.substring(index+2);
+  }
+  
+  temp1=str;
+  while(temp1.contains("not")){
+    int index=temp1.indexOf("not");
+    
+    n++;
+    temp1=temp1.substring(index+2);
+  }
+  
+  return s==n;
+}
+
+
+//gHappy
+public boolean gHappy(String str) {
+  int l=str.length();
+  boolean happy=true;
+  
+  for(int i=0;i<str.length();i++){
+    if(str.charAt(i)=='g'){
+      if(i>0 && str.charAt(i-1)=='g'){
+        happy=true;
+      }else if(i<l-1 && str.charAt(i+1)=='g'){
+        happy=true;
+      }else{
+        happy=false;
+      }
+    }
+  }
+  
+  return happy;
+}
+
+
+//countTriple
+public int countTriple(String str) {
+  int count=0;
+  
+  for(int i=1;i<str.length()-1;i++){
+    if(str.charAt(i-1)==str.charAt(i) && str.charAt(i)==str.charAt(i+1)){
+      count++;
+    }
+  }
+  
+  return count;
+}
+
+
+//sumDigits
+public int sumDigits(String str) {
+  int count=0;
+  
+  for(char c:str.toCharArray()){
+    if(Character.isDigit(c)){
+      count+=Integer.parseInt(String.valueOf(c));
+    }
+  }
+  
+  return count;
+}
+
+
+//sameEnds
+public String sameEnds(String string) {
+  int l=string.length();
+  String left="";
+  String res="";
+  
+  for(int i=0;i<l;i++){
+    left+=string.charAt(i);
+    
+    int leftLength=left.length();
+    if(i<l/2 && left.equals(string.substring(l-leftLength))){
+      res=left;
+    }
+  }
+  return res;
+}
+
+
+//mirrorEnds
+public String mirrorEnds(String string) {
+  String res="";
+  
+  for(int i=0;i<string.length();i++){
+    if(string.charAt(i)==string.charAt(string.length()-1-i)){
+      res+=string.charAt(i);
+    }else{
+      return res;
+    }
+  }
+  
+  return res;
+}
+
+
+//maxBlock
+public int maxBlock(String str) {
+  int res=0;
+  
+  for(int i=0;i<str.length();i++){
+    int count=1;
+    int j=i;
+    while(j<str.length()-1 && str.charAt(j)==str.charAt(j+1)){
+      count++;
+      j++;
+    }
+    res=Math.max(count,res);
+  }
+  
+  return res;
+}
+
+
+//sumNumbers
+public int sumNumbers(String str) {
+  int res=0;
+  String temp="";
+  
+  for(int i=0;i<str.length();i++){
+    if(Character.isDigit(str.charAt(i))){
+      if(i<str.length()-1 && Character.isDigit(str.charAt(i+1))){
+        temp+=str.charAt(i);
+      }else{
+       temp+=str.charAt(i);
+       res+=Integer.parseInt(temp);
+       temp="";
+    }
+    }
+  }
+  
+  return res;
+}
+
+
+//notreplace
+public String notReplace(String str) {
+  String res="";
+  
+  str=" "+str+" ";//for corner cases
+  for(int i=1;i<str.length()-1;i++){
+    if(str.charAt(i)=='i'){
+      if(str.charAt(i+1)=='s' && !Character.isLetter(str.charAt(i-1)) && !Character.isLetter(str.charAt(i+2)) ){
+        res+="is not";
+        i+=1;
+      }else{
+        res+=str.charAt(i);
+      }
+    }else{
+      res+=str.charAt(i);
+    }
+  }
+  
+  return res;
+}
+

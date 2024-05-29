@@ -1,0 +1,171 @@
+//groupSum
+public boolean groupSum(int start, int[] nums, int target) {
+  if(start>=nums.length){
+    return target==0;
+  }
+  
+  if(groupSum(start+1,nums,target-nums[start])){
+    return true;
+  }
+  
+  if(groupSum(start+1,nums,target)){
+    return true;
+  }
+  
+  return false;
+}
+
+
+//groupSum6
+public boolean groupSum6(int start, int[] nums, int target) {
+  if(start>=nums.length){
+    return target==0;
+  }
+  
+  if(nums[start]==6){
+    return groupSum6(start+1,nums,target-6);
+  }
+  
+  if(groupSum6(start+1,nums,target-nums[start])){
+    return true;
+  }
+  
+  if(groupSum6(start+1,nums,target)){
+    return true;
+  }
+  
+  return false;
+}
+
+
+//groupNoAdj
+public boolean groupNoAdj(int start, int[] nums, int target) {
+  if(start>=nums.length){
+    return target==0;
+  }
+  
+  if(groupNoAdj(start+2,nums,target-nums[start])){
+    return true; 
+  }
+  
+  if(groupNoAdj(start+1,nums,target)){
+    return true; 
+  }
+  
+  return false;
+}
+
+
+//groupSum5
+public boolean groupSum5(int start, int[] nums, int target) {
+  if(start>=nums.length){
+    return target==0;
+  }
+  
+  if(nums[start]%5==0){
+    if(start<nums.length-1 && nums[start+1]==1){
+      return groupSum5(start+2,nums,target-nums[start]);
+    }else{
+      return groupSum5(start+1,nums,target-nums[start]);
+    }
+  }
+  
+  if(groupSum5(start+1,nums,target-nums[start])){
+    return true; 
+  }
+  
+  if(groupSum5(start+1,nums,target)){
+    return true; 
+  }
+  
+  return false;
+}
+
+
+//groupSumClump
+public boolean groupSumClump(int start, int[] nums, int target) {
+  if(start>=nums.length){
+    return target==0;
+  }
+  
+  if(start<nums.length-1 && nums[start]==nums[start+1]){
+    int i=start;
+    while(i<nums.length-1 && nums[i]==nums[i+1]){
+      i++;
+    }
+    
+    if(groupSumClump(i+1,nums,target-nums[start]*(i-start+1))){
+      return true;
+    }else{
+      return groupSumClump(i+1,nums,target);
+    }
+  }
+  
+  if(groupSumClump(start+1,nums,target-nums[start])){
+    return true; 
+  }
+  
+  if(groupSumClump(start+1,nums,target)){
+    return true; 
+  }
+  
+  return false;
+}
+
+
+//splitArray
+public boolean splitArray(int[] nums) {
+  return recurse(0,0,0,nums);
+}
+public boolean recurse(int start,int sum1,int sum2,int[] nums){
+  if(start>=nums.length){
+    return sum1==sum2;
+  }
+  
+  if(recurse(start+1,sum1+nums[start],sum2,nums)){
+    return true;
+  }
+  
+  return recurse(start+1,sum1,sum2+nums[start],nums);
+}
+
+
+//splitOdd10
+public boolean splitOdd10(int[] nums) {
+  return recurse(0,0,0,nums);
+}
+public boolean recurse(int start,int sum1,int sum2,int[] nums){
+  if(start>=nums.length){
+    return (sum1%10==0 && sum2%2==1) || (sum1%2==1 && sum2%10==0);
+  }
+  
+  if(recurse(start+1,sum1+nums[start],sum2,nums)){
+    return true;
+  }
+  
+  return recurse(start+1,sum1,sum2+nums[start],nums);
+}
+
+
+//split53
+public boolean split53(int[] nums) {
+  return recurse(0,0,0,nums);
+}
+public boolean recurse(int start,int sum1,int sum2,int[] nums){
+  if(start>=nums.length){
+    return sum1==sum2;
+  }
+  if(nums[start]%3==0){
+    return recurse(start+1,sum1+nums[start],sum2,nums);
+  }
+  if(nums[start]%5==0){
+    return recurse(start+1,sum1,sum2+nums[start],nums);
+  }
+  if(recurse(start+1,sum1+nums[start],sum2,nums)){
+    return true;
+  }
+  
+  return recurse(start+1,sum1,sum2+nums[start],nums);
+}
+
+//

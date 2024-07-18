@@ -1,0 +1,220 @@
+#1
+package zoho;
+
+import java.util.*;
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		add(3,4);
+		add(354l,6578l);
+		add((byte)4,(byte)5);
+		add((short)10,(short)67);
+		add(5.90f,7.8f);
+		add(6.777,9.4546);
+		
+		sub(3,4);
+		sub(354l,6578l);
+		sub((byte)4,(byte)5);
+		sub((short)10,(short)67);
+		sub(5.90f,7.8f);
+		sub(6.777,9.4546);
+		
+		mul(3,4);
+		mul(354l,6578l);
+		mul((byte)4,(byte)5);
+		mul((short)10,(short)67);
+		mul(5.90f,7.8f);
+		mul(6.777,9.4546);
+		
+		
+		div(3,4);
+		div(354l,6578l);
+		div((byte)4,(byte)5);
+		div((short)10,(short)67);
+		div(5.90f,7.8f);
+		div(6.777,9.4546);
+		
+	}
+	
+	public static void add(int a,int b) {
+		int sum=a+b;
+		System.out.println("Addition :"+sum);
+	}
+	
+	public static void add(byte a,byte b) {
+		byte sum=(byte)(a+b);
+		System.out.println("Addition :"+sum);
+	}
+	
+	public static void add(short a,short b) {
+		short sum=(short)(a+b);
+		System.out.println("Addition :"+sum);
+	}
+	
+	public static void add(float a,float b) {
+		float sum=a+b;
+		System.out.println("Addition :"+sum);
+	}
+	
+	public static void add(double a,double b) {
+		double sum=a+b;
+		System.out.println("Addition :"+sum);
+	}
+	
+	public static void add(long a,long b) {
+		long sum=a+b;
+		System.out.println("Addition :"+sum);
+	}
+	
+	
+	public static void sub(int a,int b) {
+		int sub=a-b;
+		System.out.println("Subtraction :"+sub);
+	}
+	
+	public static void sub(short a,short b) {
+		short sub=(short)(a-b);
+		System.out.println("Subtraction :"+sub);
+	}
+	
+	public static void sub(byte a,byte b) {
+		byte sub=(byte)(a-b);
+		System.out.println("Subtraction :"+sub);
+	}
+	
+	public static void sub(float a,float b) {
+		float sub=a-b;
+		System.out.println("Subtraction :"+sub);
+	}
+	
+	public static void sub(double a,double b) {
+		double sub=a-b;
+		System.out.println("Subtraction :"+sub);
+	}
+	
+	public static void sub(long a,long b) {
+		long sub=a-b;
+		System.out.println("Subtraction :"+sub);
+	}
+	
+	public static void mul(int a,int b) {
+		int m=a*b;
+		System.out.println("Multiplication :"+m);
+	}
+	
+	public static void mul(byte a,byte b) {
+		int m=a*b;
+		System.out.println("Multiplication :"+m);
+	}
+	
+	public static void mul(short a,short b) {
+		int m=a*b;
+		System.out.println("Multiplication :"+m);
+	}
+	
+	public static void mul(long a,long b) {
+		long m=a*b;
+		System.out.println("Multiplication :"+m);
+	}
+	
+	public static void mul(double a,double b) {
+		double m=a*b;
+		System.out.println("Multiplication :"+m);
+	}
+	
+	public static void mul(float a,float b) {
+		double m=a*b;
+		System.out.println("Multiplication :"+m);
+	}
+	
+	
+	public static void div(int a,int b) {
+		int d=a/b;
+		System.out.println("Division :"+d);
+	}
+	
+	public static void div(short a,short b) {
+		short d=(short)(a/b);
+		System.out.println("Division :"+d);
+	}
+	
+	public static void div(byte a,byte b) {
+		byte d=(byte)(a/b);
+		System.out.println("Division :"+d);
+	}
+	
+	public static void div(float a,float b) {
+		float d=(a/b);
+		System.out.println("Division :"+d);
+	}
+	
+	public static void div(double a,double b) {
+		double d=(a/b);
+		System.out.println("Division :"+d);
+	}
+	
+	public static void div(long a,long b) {
+		long d=(a/b);
+		System.out.println("Division :"+d);
+	}
+
+}
+
+
+
+
+
+
+#2
+package zoho;
+
+public class Person {
+	String name;
+	int age;
+	String address;
+	
+	Person(String name){
+		this.name=name;
+	}
+	
+	Person(String name,int age){
+		this.name=name;
+		this.age=age;
+	}
+	
+	Person(String name,int age,String address){
+		this.name=name;
+		this.age=age;
+		this.address=address;
+	}
+
+	public static void main(String[] args) {
+	}
+
+}
+
+
+
+
+#3
+package zoho;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Person p1=new Person("Venkat");
+		Person p2=new Person("Venkat",23);
+		Person p3=new Person("Venkat",23,"Chennai");
+		
+		System.out.println(p1.name);
+		System.out.println(p2.name +" "+p2.age);
+		System.out.println(p3.name+" "+p3.age+" "+p3.address);
+
+	}
+
+}
+
+
+
+

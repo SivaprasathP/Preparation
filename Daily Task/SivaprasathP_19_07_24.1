@@ -1,0 +1,55 @@
+#1
+package zoho;
+import java.util.*;
+public class Login {
+	static String username;
+	static String password;
+	
+	static {
+		username="Raj";
+		password="12345";
+	}
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the username : ");
+		String uName=sc.next();
+		System.out.println("Enter the password : ");
+		String uPassword=sc.next();
+		
+		if(username.equals(uName) && password.equals(uPassword)) {
+			System.out.println("Logging in");
+		}else {
+			System.out.println("User name or Password doesn't match");
+		}
+
+	}
+
+}
+
+
+
+#2
+package zoho;
+
+public class Demo3 {
+	static int a;
+	static int b;
+	
+	static {
+		a=10;
+		b=20;
+	}
+
+	public static void main(String[] args) {
+		int add=a+b;
+		System.out.println("Additon:"+add);
+		int sub=a-b;
+		System.out.println("Subtraction:"+sub);
+		int mul=a*b;
+		System.out.println("Multiplication:"+mul);
+		int div=a/b;
+		System.out.println("Divison: "+div);
+	}
+
+}

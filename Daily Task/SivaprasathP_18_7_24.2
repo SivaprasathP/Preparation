@@ -1,0 +1,184 @@
+#1
+
+package zoho;
+
+public class Employee {
+	int id;
+	String name;
+	String role;
+	
+	Employee(int id,String name,String role) {
+		this.id=id;
+		this.name=name;
+		this.role=role;
+	}
+	
+	void getEmployeeDetails() {
+		System.out.println(id +" "+name+" "+role);
+	}
+	
+	public static void main(String[] args) {
+		Employee h=new HourlyEmployee(1,"Ram","HR");
+		h.getEmployeeDetails();
+		
+		Employee s=new SalariedEmployee(2,"Raghu","Technical");
+		s.getEmployeeDetails();
+	}
+
+}
+
+class HourlyEmployee extends Employee{
+	String type="Hourly";
+	
+	HourlyEmployee(int id,String name,String role){
+		super(id,name,role);
+	}
+	
+	void getEmployeeDetails() {
+		System.out.println(id +" "+name+" "+role+"Hourly Employee");
+	}
+	
+}
+
+class SalariedEmployee extends Employee{
+    String type="Salaried";
+	
+	SalariedEmployee(int id,String name,String role){
+		super(id,name,role);
+	}
+	
+	void getEmployeeDetails() {
+		System.out.println(id +" "+name+" "+role+"Salaried Employee");
+	}
+}
+
+
+
+
+
+#2package zoho;
+
+public class Vehicle {
+	boolean s;
+	
+	void start() {
+		System.out.println("Vehicle is started");
+	}
+	
+	void stop() {
+		System.out.println("Vehicle is stopped");
+	}
+	
+	public static void main(String[] args) {
+		Vehicle c=new Car();
+		c.start();
+		c.stop();
+		
+		Vehicle b=new Bike();
+		b.start();
+		b.stop();
+		
+		Vehicle j=new Jeep();
+		j.start();
+		j.stop();
+	}
+
+}
+
+class Car extends Vehicle{
+	void start() {
+		System.out.println("Car is started");
+	}
+	
+	void stop() {
+		System.out.println("Car is stopped");
+	}
+}
+
+class Bike extends Vehicle{
+	void start() {
+		System.out.println("Bike is started");
+	}
+	
+	void stop() {
+		System.out.println("Bike is stopped");
+	}
+}
+
+class Jeep extends Vehicle{
+	void start() {
+		System.out.println("Jeep is started");
+	}
+	
+	void stop() {
+		System.out.println("Jeep is stopped");
+	}
+}
+
+
+
+
+#3
+
+package zoho;
+
+public class Movie {
+	String name;
+	
+	Movie(String name){
+		this.name=name;
+	}
+	
+	void display() {
+		System.out.println(this.name);
+	}
+	
+	public static void main(String[] args) {
+		Movie r=new RomComMovie("500 days of summer","Romance");
+		r.display();
+		
+		Movie t=new ThrillerMovie("Old Boy","Thriller");
+		t.display();
+		
+		Movie c=new ComedyMovie("HangOver");
+		c.display();
+	}
+
+}
+class RomComMovie extends Movie{
+	String type="RomCom";
+	
+	RomComMovie(String name,String type) {
+		super(name);
+		this.type=type;
+	}
+
+	void display() {
+		System.out.println(this.name + " "+this.type);
+	}
+	
+}
+class ThrillerMovie extends Movie{
+	String type="Thriller";
+	
+	ThrillerMovie(String name,String type) {
+		super(name);
+		this.type=type;
+	}
+	
+	void display() {
+		System.out.println(this.name + " "+this.type);
+	}
+
+}
+class ComedyMovie extends Movie{
+	String type="Comedy";
+	
+	ComedyMovie(String name){
+		super(name);
+	}
+	
+	void display() {
+		System.out.println(this.name + " "+this.type);
+	}
+}

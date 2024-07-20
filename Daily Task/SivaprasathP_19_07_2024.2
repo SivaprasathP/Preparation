@@ -1,0 +1,182 @@
+#1 
+package zoho;
+import java.util.*;
+public class Demo4 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String s=sc.next();
+		
+		int count=0;
+		for(int i=0;i<s.length();i++) {
+			if(isVowel(s.charAt(i))) {
+				count++;
+			}
+		}
+		
+		System.out.println("No of Vowels: "+count);
+
+	}
+	
+	static boolean isVowel(char c) {
+		if(c=='a' || c=='e' || c=='o' || c=='u' || c=='i' || c=='A' || c=='E' || c=='I' || c=='O' || c=='U') {
+			return true;
+		}
+		return false;
+	}
+
+}
+
+
+#2
+package zoho;
+import java.util.*;
+public class Reverse {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String s=sc.next();
+		
+		char[] ch=s.toCharArray();
+		int i=0,j=ch.length-1;
+		while(i<j) {
+			swap(ch,i,j);
+			i++;
+			j--;
+		}
+		
+		System.out.println(String.valueOf(ch));
+	}
+	
+	static void swap(char[] ch,int i,int j) {
+		char temp=ch[i];
+		ch[i]=ch[j];
+		ch[j]=temp;
+	}
+
+}
+
+
+#3
+package zoho;
+import java.util.*;
+public class WordReverse {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String s=sc.nextLine();
+		
+		String[] str=s.split(" ");
+		int i=0,j=str.length-1;
+		while(i<j) {
+			swap(str,i,j);
+			i++;
+			j--;
+		}
+		
+		String res=String.join(" ",str);
+		
+		
+		System.out.println(res);
+		
+
+	}
+	static void swap(String[] st,int i,int j) {
+		String temp=st[i];
+		st[i]=st[j];
+		st[j]=temp;
+	}
+
+}
+
+
+#4
+package zoho;
+import java.util.*;
+public class Domain {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String email=sc.next();
+		
+		if(validate(email)) {
+			System.out.println("Your email is correct");
+		}else {
+			System.out.println("Your email is not correct");
+		}
+	}
+	
+	static boolean validate(String e) {
+		int firstIndex=e.indexOf("@");
+		int lastIndex=e.lastIndexOf("@");
+		
+		if(firstIndex!=lastIndex || firstIndex==-1) {
+			return false;
+			//there should be only one @ character in a email
+		}
+		
+		int comIndex=e.indexOf(".com");
+		if(!(comIndex>firstIndex+1)) {
+			return false;
+			//.com must be after the 2 character only
+		}
+		return true;
+	}
+
+}
+
+
+
+#5 
+package zoho;
+import java.util.*;
+public class Capitalize {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		String s=sc.nextLine();
+		String[] str=s.split(" ");
+		
+		for(int i=0;i<str.length;i++) {
+			str[i]=str[i].substring(0,1).toUpperCase() + str[i].substring(1);
+		}
+		
+		System.out.println(String.join(" ", str));
+
+	}
+
+}
+
+
+#6
+import java.lang.*;
+class SqueakyClean {
+    static String clean(String identifier) {
+        //throw new UnsupportedOperationException("Please implement the (static) SqueakyClean.clean() method");
+
+        identifier=identifier.replace(" ","_");
+        if(identifier.contains("-")){
+            int i=identifier.indexOf("-");
+            identifier=identifier.substring(0,i)+identifier.substring(i+1,i+2).toUpperCase()+identifier.substring(i+2);
+        }
+
+        identifier=identifier.replace("3","e");
+        identifier=identifier.replace("0","o");
+        identifier=identifier.replace("4","a");
+        identifier=identifier.replace("1","l");
+        identifier=identifier.replace("7","t");
+
+        for(int i=0;i<identifier.length();i++){
+            if(Character.isLetterOrDigit(identifier.charAt(i)) || identifier.charAt(i)=='_'){
+                continue;
+            }else{
+                identifier=identifier.replace(identifier.charAt(i)+"","");
+                i--;
+            }
+        }
+        
+
+        return identifier;
+    }
+}

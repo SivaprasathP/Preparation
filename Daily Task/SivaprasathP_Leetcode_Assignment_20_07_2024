@@ -1,0 +1,162 @@
+#1
+
+import java.util.List;
+import java.util.*;
+
+class ProteinTranslator {
+
+    List<String> translate(String rnaSequence) {
+        List<String> list=new ArrayList<>();
+        Map<String,String> map=new HashMap<>();
+
+        map.put("AUG","Methionine");
+        map.put("UUU","Phenylalanine");
+        map.put("UUC","Phenylalanine");
+        map.put("UUA","Leucine");
+        map.put("UUG","Leucine");
+        map.put("UCU","Serine");
+        map.put("UCC","Serine");
+        map.put("UCA","Serine");
+        map.put("UCG","Serine");
+        map.put("UAU","Tyrosine");
+        map.put("UAC","Tyrosine");
+        map.put("UGU","Cysteine");
+        map.put("UGC","Cysteine");
+        map.put("UGG","Tryptophan");
+        map.put("UAA","STOP");
+        map.put("UAG","STOP");
+        map.put("UGA","STOP");
+
+        for(int i=0;i<rnaSequence.length();i+=3){
+            if(i+3>rnaSequence.length()){
+                throw new IllegalArgumentException("Invalid codon");
+            }else{
+            if(!map.containsKey(rnaSequence.substring(i,i+3))){
+                throw new IllegalArgumentException("Invalid codon");
+            }else if(map.containsKey(rnaSequence.substring(i,i+3))){
+                if(map.get(rnaSequence.substring(i,i+3)).equals("STOP")){
+                    return list;
+                }else{
+                    list.add(map.get(rnaSequence.substring(i,i+3)));
+                }
+            }
+            }
+        }
+
+        return list;
+    }
+}
+
+
+#2
+import java.util.*;
+
+class DiamondPrinter {
+
+    List<String> printToList(char a) {
+        //throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+
+        List<String> list=new ArrayList<>();
+        int n=(a-'A')+1;
+        char c='A';
+        
+        for(int i=1;i<=n;i++){
+            String s="";
+            for(int j=n-i;j>=1;j--){
+                s+=" ";
+            }
+            s+=""+c;
+
+            int val=c-'A';
+            for(int d=1;d<=val;d++){
+                if(d==1){
+                    s+=" ";
+                }else{
+                    s+="  ";
+                }
+            }
+
+            if(val>0){
+                s+=""+c;
+            }
+            for(int j=n-i;j>=1;j--){
+                s+=" ";
+            }
+            list.add(s);
+            c++;
+        }
+
+        c--;
+        c--;
+        for(int i=n-1;i>0;i--){
+            String s="";
+            for(int j=n-i;j>=1;j--){
+                s+=" ";
+            }
+            s+=""+c;
+
+            int val=c-'A';
+            for(int d=1;d<=val;d++){
+                if(d==1){
+                    s+=" ";
+                }else{
+                    s+="  ";
+                }
+            }
+
+            if(val>0){
+                s+=""+c;
+            }
+            for(int j=n-i;j>=1;j--){
+                s+=" ";
+            }
+            list.add(s);
+            c--;
+        }
+        return list;
+    }
+
+}
+
+
+
+#3
+class IsbnVerifier {
+
+    boolean isValid(String stringToVerify) {
+        //throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        if(stringToVerify.length()<10){
+            return false;
+        }
+
+        long l=0;
+        int i=10;
+        for(int j=0;j<stringToVerify.length();j++){
+            if(i==0){
+                return false;
+            }
+            char c=stringToVerify.charAt(j);
+            if(Character.isDigit(c)){
+                int val=c-48;
+                l+=i*val;
+                i--;
+            }else if(c=='X'){
+                if(j!=stringToVerify.length()-1){
+                    return false;
+                }else{
+                    l+=i*10;
+                    i--;
+                }
+            }else{
+                if(c=='-'){
+                    continue;
+                }else{
+                    return false;
+                }
+            }
+        }
+
+        return l%11==0;
+    }
+
+}

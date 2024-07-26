@@ -1,0 +1,178 @@
+#1
+package task;
+public class Book {
+	String title;
+	String ISBN;
+	String author;
+	int price;
+	static int totalBooks;
+
+
+	public String display() {
+		return "Book Name: "+this.title+"\nISBN : "+this.ISBN+"\nAuthor : "+this.author+"\nPrice : "+this.price;
+	}
+
+}
+
+
+
+
+
+
+
+#2
+package task;
+public class Employee {
+	int id;
+	String name;
+	String role;
+	private long phoneNumber;
+	private int salary;
+	static int totalEmployees;
+
+	
+
+	public Employee(int id, String name, String role, long phoneNumber, int salary) {
+		this.id = id;
+		this.name = name;
+		this.role = role;
+		this.phoneNumber = phoneNumber;
+		this.salary = salary;
+	}
+
+	
+
+	public String display() {
+		return "Employee ID: " + this.id + "\nName: " + this.name + "\nRole: " + this.role + "\nPhoneNumber: " + this.phoneNumber + "\nSalary: "
+				+ this.salary;
+	}
+
+
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public int getSalary() {
+		return salary;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+
+}
+
+
+
+
+
+#3
+package task;
+
+public class Flight {
+	String flightName;
+	int flightID;
+	String takeOffAirport;
+	String landingAirport;
+	
+	public Flight(String flightName, int flightID, String takeOffAirport, String landingAirport) {
+		this.flightName = flightName;
+		this.flightID = flightID;
+		this.takeOffAirport = takeOffAirport;
+		this.landingAirport = landingAirport;
+	}
+
+
+	public String display() {
+		return "FlightName: " + this.flightName + "\nFlightID: " + this.flightID + "\nTakeOffAirport: " + this.takeOffAirport
+				+ "\nLandingAirport: " + this.landingAirport;
+	}
+	
+	
+}
+
+
+
+
+
+
+
+#4
+package task;
+public class Movie {
+	String movieName;
+	String actor;
+	String actress;
+	String genre;
+	float ratings;
+
+
+	public Movie(String movieName, String actor, String actress, String genre, float ratings) {
+		this.movieName = movieName;
+		this.actor = actor;
+		this.actress = actress;
+		this.genre = genre;
+		this.ratings = ratings;
+	}
+
+	public String display() {
+		return "Movie: " + this.movieName + "\nActor: " + this.actor + "\nActress: " + this.actress + "\nGenre: " + this.genre
+				+ "\nRatings: " + this.ratings;
+	}
+
+}
+
+
+
+
+
+
+
+
+#5
+package task;
+
+public class Team {
+	String name;
+	String city;
+	String division;
+	
+	public Team(String name, String city, String division) {
+		this.name = name;
+		this.city = city;
+		this.division = division;
+	}
+	
+	public void playgame() {
+		System.out.println(this.name+" is playing");
+	}
+	
+	public void hireCoach() {
+		System.out.println(this.name+" is hiring coach");
+	}
+}
+
+class Player{
+	String name;
+	String position;
+	int jerseyNumber;
+	
+	public Player(String name, String position, int jerseyNumber) {
+		this.name = name;
+		this.position = position;
+		this.jerseyNumber = jerseyNumber;
+	}
+	
+	public void playgame() {
+		System.out.println(this.name+" is playing");
+	}
+	
+	public void train() {
+		System.out.println(this.name+" is currently training");
+	}
+}
+

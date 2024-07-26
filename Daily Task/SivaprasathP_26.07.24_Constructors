@@ -1,0 +1,136 @@
+#1
+package task;
+
+import java.util.ArrayList;
+
+public class Book {
+	String title;
+	String iSBN;
+	String author;
+	int price;
+	static int totalBooks;
+	
+	static private ArrayList<Book> books=new ArrayList<>();
+	
+	
+	public Book(String title, String iSBN, String author, int price) {
+		this.title = title;
+		this.iSBN = iSBN;
+		this.author = author;
+		this.price = price;
+		books.add(this);
+		totalBooks=books.size();
+	}
+	
+	public void displayAllBooks() {
+		for(Book b:books) {
+			System.out.println(b.display());
+		}
+	}
+	
+	
+	
+	public String display() {
+		return "Book Name: "+this.title+"\nISBN : "+this.iSBN+"\nAuthor : "+this.author+"\nPrice : "+this.price;
+	}
+	
+	
+}
+
+
+
+
+
+#2
+package task;
+
+import java.util.ArrayList;
+
+public class Employee {
+	int id;
+	String name;
+	String role;
+	private long phoneNumber;
+	private int salary;
+	static int totalEmployees;
+	
+	static private ArrayList<Employee> employees=new ArrayList<>();
+	
+	public Employee(int id, String name, String role, long phoneNumber, int salary) {
+		this.id = id;
+		this.name = name;
+		this.role = role;
+		this.phoneNumber = phoneNumber;
+		this.salary = salary;
+		employees.add(this);
+		totalEmployees=employees.size();
+	}
+	
+	public void displayAll() {
+		for(Employee e:employees) {
+			System.out.println(e.display());
+		}
+	}
+	
+	
+	public String display() {
+		return "Employee ID: " + this.id + "\nName: " + this.name + "\nRole: " + this.role + "\nPhoneNumber: " + this.phoneNumber + "\nSalary: "
+				+ this.salary;
+	}
+
+
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+	
+	
+
+}
+
+
+
+
+#3
+package task;
+
+import java.util.ArrayList;
+
+public class Movie {
+	String movieName;
+	String actor;
+	String actress;
+	String genre;
+	float ratings;
+	
+	private static ArrayList<Movie> movies=new ArrayList<>();
+	
+	public Movie(String movieName, String actor, String actress, String genre, float ratings) {
+		this.movieName = movieName;
+		this.actor = actor;
+		this.actress = actress;
+		this.genre = genre;
+		this.ratings = ratings;
+	}
+	
+	
+	public String display() {
+		return "Movie: " + this.movieName + "\nActor: " + this.actor + "\nActress: " + this.actress + "\nGenre: " + this.genre
+				+ "\nRatings: " + this.ratings;
+	}
+	
+	public void displayAll() {
+		for(Movie m:movies) {
+			System.out.println(m.display());
+		}
+	}
+	
+}

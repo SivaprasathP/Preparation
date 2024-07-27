@@ -1,0 +1,258 @@
+#1
+package task;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class RotateArray {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		int length=sc.nextInt();
+		
+		int[] nums=new int[length];
+		for(int i=0;i<length;i++) {
+			nums[i]=sc.nextInt();
+		}
+		
+		System.out.println("Enter the rotation count: ");
+		int rotate=sc.nextInt();
+		
+		rotate=rotate%length;
+		
+		int i=0;
+		int j=length-rotate;
+		int[] rotatedArr=new int[length];
+		while(j<length) {
+			rotatedArr[i]=nums[j];
+			i++;
+			j++;
+		}
+		
+		j=0;
+		while(j<length-rotate) {
+			rotatedArr[i]=nums[j];
+			i++;
+			j++;
+		}
+		
+		System.out.println(Arrays.toString(rotatedArr));
+
+	}
+
+}
+
+
+
+
+
+#2
+package task;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Transpose {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the number of rows: ");
+		int rows=sc.nextInt();
+		System.out.println("Enter the number of columns: ");
+		int cols=sc.nextInt();
+		
+		int[][] matrix =new int[rows][cols];
+		for(int i=0;i<rows;i++) {
+			for(int j=0;j<cols;j++) {
+				matrix[i][j]=sc.nextInt();
+			}
+		}
+		
+		int[][] transpose=new int[cols][rows];
+		
+		for(int i=0;i<cols;i++) {
+			for(int j=0;j<rows;j++) {
+				transpose[i][j]=matrix[j][i];
+			}
+		}
+		
+		for(int[] a:transpose) {
+			System.out.println(Arrays.toString(a));
+		}
+
+	}
+
+}
+
+
+
+
+#3
+package task;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class SpiralMatrix {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int[][] arr=new int[n][n];
+		
+		int prod=n*n;
+		
+		int val=1;
+		int left=0,top=0;
+		int right=n-1,bottom=n-1;
+		while(val<=prod && left<=right && top<=bottom) {
+			int i=left;
+			while(i<=right) {
+				arr[top][i]=val;
+				val++;
+				i++;
+			}
+			val--;
+			i=top;
+			top++;
+			
+			while(i<=bottom) {
+				arr[i][right]=val;
+				val++;
+				i++;
+			}
+			val--;
+			
+			i=right;
+			right--;
+			
+			
+			
+			while(i>=left) {
+				arr[bottom][i]=val;
+				val++;
+				i--;
+			}
+			val--;
+			
+			i=bottom;
+			bottom--;
+			
+			
+			while(i>=top) {
+				arr[i][left]=val;
+				val++;
+				i--;
+			}
+			
+			left++;
+			
+		}
+		
+		for(int[] a:arr) {
+			System.out.println(Arrays.toString(a));
+		}
+	}
+
+}
+
+
+
+
+
+#4
+
+package task;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class JaggedArray {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the total number of persons: ");
+		int n=sc.nextInt();
+		System.out.println("Enter their current weight : ");
+		int[][] arr=new int[n][1];
+		for(int i=0;i<n;i++) {
+			arr[i][0]=sc.nextInt();
+		}
+		
+	}
+	
+	static void addWeight(int[][] arr,int person) {
+		Scanner sc=new Scanner(System.in);
+		int[] copy=Arrays.copyOf(arr[person-1],arr[person-1].length+1 );
+		System.out.println("Enter the weight of "+person+"th person:");
+		copy[copy.length-1]=sc.nextInt();
+		arr[person-1]=copy;
+	}
+	
+	static int minWeight(int[][] arr,int person) {
+		int min=Integer.MAX_VALUE;
+		for(int i=0;i<arr[person-1].length;i++) {
+			min=Math.min(min, arr[person-1][i]);
+		}
+		return min;
+	}
+
+}
+
+
+
+#5
+
+class BirdWatcher {
+    private final int[] birdsPerDay;
+
+    public BirdWatcher(int[] birdsPerDay) {
+        this.birdsPerDay = birdsPerDay.clone();
+    }
+
+    public int[] getLastWeek() {
+        return birdsPerDay;
+        
+    }
+
+    public int getToday() {
+        return birdsPerDay[birdsPerDay.length-1];
+        
+    }
+
+    public void incrementTodaysCount() {
+        birdsPerDay[birdsPerDay.length-1]++;
+        
+    }
+
+    public boolean hasDayWithoutBirds() {
+        for(int i:birdsPerDay){
+            if(i==0){
+                return true;
+            }
+        }
+        return false;
+        
+    }
+
+    public int getCountForFirstDays(int numberOfDays) {
+        int c=0;
+        int min=Math.min(birdsPerDay.length,numberOfDays);
+        for(int i=0;i<min;i++){
+            c+=birdsPerDay[i];
+        }
+        return c;
+        
+    }
+
+    public int getBusyDays() {
+        int c=0;
+        for(int i:birdsPerDay){
+            if(i>=5){
+                c++;
+            }
+        }
+        return c;
+    }
+}

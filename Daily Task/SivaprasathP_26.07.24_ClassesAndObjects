@@ -140,7 +140,9 @@ public class Team {
 	String name;
 	String city;
 	String division;
-	
+        private static ArrayList<PLayer> players=new ArrayList<>();
+
+
 	public Team(String name, String city, String division) {
 		this.name = name;
 		this.city = city;
@@ -154,12 +156,17 @@ public class Team {
 	public void hireCoach() {
 		System.out.println(this.name+" is hiring coach");
 	}
+
+        public void addPlayer(Player p){
+                players.add(p);
+        }
 }
 
 public class Player{
 	String name;
 	String position;
 	int jerseyNumber;
+
 	
 	public Player(String name, String position, int jerseyNumber) {
 		this.name = name;

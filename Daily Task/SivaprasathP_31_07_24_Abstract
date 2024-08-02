@@ -520,6 +520,17 @@ class MalayalamMovie extends Movie{
 }
 
 
+public class Main {
+
+	public static void main(String[] args) {
+		Movie m1=new TamilMovie("Leo","Action",3.5f);
+		Movie m2=new MalayalamMovie("Aavesham","Comedy",4.5f);
+	}
+
+}
+
+
+
 
 
 
@@ -582,5 +593,18 @@ class VideoDocument extends Document{
 	
 }
 
+public class Main {
+
+	public static void main(String[] args) {
+		Document d1=new PDFDocument();
+		Document d2=new TextDocument();
+		Document d3=new VideoDocument();
+		
+		d1.copy();
+		d2.copy();
+		d3.paste();
+	}
+
+}
 
 

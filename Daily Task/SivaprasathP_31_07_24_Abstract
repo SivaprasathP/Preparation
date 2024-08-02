@@ -1,0 +1,586 @@
+1. Change Employee class as abstract and add abstract methods like calculatePay() with concrete methods like getEmployeeDetails(), etc. 
+Extend this abstract class in subclasses - HourlyEmployee and SalariedEmployee. 
+Allow the user to input details of employees and calculate their respective pay using the abstract class reference.
+
+package zoho;
+import java.util.*;
+public abstract class Employee {
+	int id;
+	String name;
+	String role;
+	
+	Employee(int id,String name,String role) {
+		this.id=id;
+		this.name=name;
+		this.role=role;
+	}
+	
+	abstract float calculatePay();
+	
+	void getEmployeeDetails() {
+		System.out.println(id +" "+name+" "+role);
+	}
+
+}
+
+class HourlyEmployee extends Employee{
+	float pay;
+	int hoursOfWork;
+	
+	HourlyEmployee(int id,String name,String role,float pay,int hoursOfWork){
+		super(id,name,role);
+		this.pay=pay;
+		this.hoursOfWork=hoursOfWork;
+	}
+	
+	public float calculatePay() {
+		return pay*hoursOfWork;
+	}
+
+	
+}
+
+class SalariedEmployee extends Employee{
+    float salary;
+	
+	SalariedEmployee(int id,String name,String role,float salary){
+		super(id,name,role);
+		this.salary=salary;
+	}
+	
+	public float calculatePay() {
+		return salary;
+	}
+	
+}
+
+public class Main{
+   public static void main(String[] args) {
+		Employee h=new HourlyEmployee(1,"Ram","HR",250,5);
+		System.out.println(h.calculatePay());
+		
+		Employee s=new SalariedEmployee(2,"Raghu","Technical",15000);
+		System.out.println(s.calculatePay());
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+2. Create an abstract class named Product with methods like getPrice() and getDescription(). 
+Extend the abstract class in classes representing different types of products such as ElectronicsProduct , ClothingProduct , and BookProduct . 
+Display the details of products and calculate the total price in a shopping cart.
+
+
+
+package task;
+
+import java.util.ArrayList;
+
+public abstract class Product {
+	int productId;
+	String productName;
+	float price;
+	
+	static ArrayList<Product> product=new ArrayList<>();
+	
+	static ArrayList<Product> cart=new ArrayList<>();
+	
+	Product(int productId,String productName,float price){
+		this.productId=productId;
+		this.productName=productName;
+		this.price=price;
+		product.add(this);
+	}
+	
+    abstract float getPrice();
+   
+    abstract void getDescription();
+    
+    
+    static float totalPrice() {
+		float sum=0f;
+		for(Product p:cart) {
+			sum+=p.getPrice();
+		}
+		return sum;
+	}
+    
+    static void displayCart() {
+    	for(Product p:cart) {
+    		p.getDescription();
+    	}
+    }
+    
+}
+
+
+
+
+package task;
+
+public abstract class ElectronicsProduct extends Product{
+	float voltage;
+	float battery;
+	
+	ElectronicsProduct(int productId,String productName,float price,float voltage,float battery){
+		super(productId,productName,price);
+		this.voltage=voltage;
+		this.battery=battery;
+	}
+	
+	static void addCart(int pId) {
+		for(Product e:Product.product) {
+			if(e instanceof ElectronicsProduct && e.productId==pId) {
+				Product.cart.add(e);
+				System.out.println("Added to cart");
+			}
+		}
+	}
+}
+
+class Laptop extends ElectronicsProduct{
+	String processor;
+	
+	Laptop(int productId, String productName,float price, float voltage, float battery,String processor) {
+		super(productId, productName,price, voltage, battery);
+		this.processor=processor;
+	}
+
+	public float getPrice() {
+		return this.price;
+	}
+	
+	public void getDescription() {
+		System.out.println("Product ID: "+this.productId);
+		System.out.println("Product Name: "+this.productName);
+		System.out.println("Price: "+this.price);
+		System.out.println("Voltage: "+this.voltage);
+		System.out.println("Battery: "+this.battery);
+		System.out.println("Processor: "+this.processor);
+	}
+}
+
+class Camera extends ElectronicsProduct{
+	String lensType;
+	
+	Camera(int productId, String productName,float price, float voltage, float battery,String lensType) {
+		super(productId, productName,price, voltage, battery);
+		this.lensType=lensType;
+	}
+	
+	public float getPrice() {
+		return this.price;
+	}
+	
+	public void getDescription() {
+		System.out.println("Product ID: "+this.productId);
+		System.out.println("Product Name: "+this.productName);
+		System.out.println("Price: "+this.price);
+		System.out.println("Voltage: "+this.voltage);
+		System.out.println("Battery: "+this.battery);
+		System.out.println("Lens Type: "+this.lensType);
+	}
+}
+
+class SmartPhone extends ElectronicsProduct{
+	float storage;
+	
+	SmartPhone(int productId, String productName,float price, float voltage, float battery,float storage) {
+		super(productId, productName,price, voltage, battery);
+		this.storage=storage;
+	}
+	
+	public float getPrice() {
+		return this.price;
+	}
+	
+	public void getDescription() {
+		System.out.println("Product ID: "+this.productId);
+		System.out.println("Product Name: "+this.productName);
+		System.out.println("Price: "+this.price);
+		System.out.println("Voltage: "+this.voltage);
+		System.out.println("Battery: "+this.battery);
+		System.out.println("Storage: "+this.storage);
+	}
+}
+
+
+
+package task;
+
+public abstract class ClothingProduct extends Product{
+	String size;
+	String color;
+	
+	ClothingProduct(int productId, String productName, float price,String size,String color) {
+		super(productId, productName, price);
+		this.size=size;
+		this.color=color;
+	}
+	
+	static void addCart(int pId) {
+		for(Product c:Product.product) {
+			if(c instanceof ClothingProduct && c.productId==pId) {
+				Product.cart.add(c);
+				System.out.println("Added to cart");
+			}
+		}
+	}
+}
+
+class Shirts extends ClothingProduct{
+	Shirts(int productId, String productName, float price,String size,String color) {
+		super(productId, productName, price,size,color);
+	}
+
+	public float getPrice() {
+		return this.price;
+	}
+	
+	public void getDescription() {
+		System.out.println("Product ID: "+this.productId);
+		System.out.println("Product Name: "+this.productName);
+		System.out.println("Price: "+this.price);
+		System.out.println("Size: "+this.size);
+		System.out.println("Color: "+this.color);
+	}
+}
+
+class Pants extends ClothingProduct{
+	Pants(int productId, String productName, float price,String size,String color) {
+		super(productId, productName, price,size,color);
+	}
+
+	public float getPrice() {
+		return this.price;
+	}
+	
+	public void getDescription() {
+		System.out.println("Product ID: "+this.productId);
+		System.out.println("Product Name: "+this.productName);
+		System.out.println("Price: "+this.price);
+		System.out.println("Size: "+this.size);
+		System.out.println("Color: "+this.color);
+	}
+}
+
+
+
+package task;
+
+public abstract class BookProduct extends Product{
+	String author;
+	
+	BookProduct(int productId, String productName, float price,String author) {
+		super(productId, productName, price);
+		this.author=author;
+	}
+	
+	static void addCart(int pId) {
+		for(Product b:Product.product) {
+			if(b instanceof BookProduct && b.productId==pId) {
+				Product.cart.add(b);
+				System.out.println("Added to cart");
+			}
+		}
+	}
+}
+
+class Fiction extends BookProduct{
+	Fiction(int productId, String productName, float price,String author) {
+		super(productId, productName, price,author);
+		this.author=author;
+	}
+
+	public float getPrice() {
+		return this.price;
+	}
+	
+	public void getDescription() {
+		System.out.println("Product ID: "+this.productId);
+		System.out.println("Product Name: "+this.productName);
+		System.out.println("Price: "+this.price);
+		System.out.println("Author: "+this.author);
+	}
+}
+
+class NonFiction extends BookProduct{
+	NonFiction(int productId, String productName, float price,String author) {
+		super(productId, productName, price,author);
+		this.author=author;
+	}
+
+	public float getPrice() {
+		return this.price;
+	}
+	
+	public void getDescription() {
+		System.out.println("Product ID: "+this.productId);
+		System.out.println("Product Name: "+this.productName);
+		System.out.println("Price: "+this.price);
+		System.out.println("Author: "+this.author);
+	}
+}
+
+
+
+
+package task;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		ElectronicsProduct e1=new Laptop(1,"Acer",45000,65,15000,"Intel");
+		ElectronicsProduct e2=new Camera(2,"Canon",75000,50,10000,"Wide Angle");
+		ElectronicsProduct e3=new SmartPhone(3,"Nokia",15000,30,5000,256);
+		
+		ClothingProduct c1=new Shirts(4,"Otto",800,"XL","Black");
+		ClothingProduct c2=new Shirts(5,"Peter England",1000,"L","White");
+		
+		BookProduct b1=new Fiction(6,"Harry Potter",3200,"JK Rowling");
+		BookProduct b2=new Fiction(7,"The Secret",500,"Rhonda Byrne");
+		
+		
+		Scanner sc=new Scanner(System.in);
+		int choice=0;
+		while(true){
+			System.out.println("Products");
+			System.out.println("------------------------");
+			System.out.println("1) Electronics");
+			System.out.println("2) Clothes");
+			System.out.println("3) Books");
+			System.out.println("4) Exit");
+			System.out.println("------------------------");
+			
+			System.out.println("Enter your choice:");
+			choice=sc.nextInt();
+			if(choice==4) {
+				System.out.println("------------------------");
+				System.out.println("Products in cart");
+				System.out.println();
+				Product.displayCart();
+				System.out.println("------------------------");
+				System.out.println("Total Products in Cart: "+Product.cart.size());
+				System.out.println("Total Price: "+Product.totalPrice());
+				System.out.println("----------Thank You--------------");
+				break;
+			}
+			
+			if(choice==1) {
+				for(Product p:Product.product) {
+					if(p instanceof ElectronicsProduct) {
+						p.getDescription();
+						System.out.println();
+					}
+				}
+				
+				while(true) {
+					System.out.println("------------------------");
+					System.out.println("1) To Add products to Cart ");
+					System.out.println("2) Exit");
+					System.out.println("------------------------");
+					
+					System.out.println("Enter your choice:");
+					int ch1=sc.nextInt();
+					
+					if(ch1==2) {
+						break;
+					}else {
+						System.out.println("------------------------");
+						System.out.println("Enter Product ID ");
+						int pId=sc.nextInt();
+						ElectronicsProduct.addCart(pId);
+					}
+				}
+				
+			}else if(choice==2) {
+				for(Product p:Product.product) {
+					if(p instanceof ClothingProduct) {
+						p.getDescription();
+						System.out.println();
+					}
+				}
+				
+				while(true) {
+					System.out.println("------------------------");
+					System.out.println("1) To Add products to Cart ");
+					System.out.println("2) Exit");
+					System.out.println("------------------------");
+					
+					System.out.println("Enter your choice:");
+					int ch1=sc.nextInt();
+					
+					if(ch1==2) {
+						break;
+					}else {
+						System.out.println("------------------------");
+						System.out.println("Enter Product ID ");
+						int pId=sc.nextInt();
+						ClothingProduct.addCart(pId);
+					}
+				}
+			}else if(choice==3) {
+				for(Product p:Product.product) {
+					if(p instanceof BookProduct) {
+						p.getDescription();
+						System.out.println();
+					}
+				}
+				
+				while(true) {
+					System.out.println("------------------------");
+					System.out.println("1) To Add products to Cart ");
+					System.out.println("2) Exit");
+					System.out.println("------------------------");
+					
+					System.out.println("Enter your choice:");
+					int ch1=sc.nextInt();
+					
+					if(ch1==2) {
+						break;
+					}else {
+						System.out.println("------------------------");
+						System.out.println("Enter Product ID ");
+						int pId=sc.nextInt();
+						BookProduct.addCart(pId);
+					}
+				}
+			}else {
+				System.out.println("Invalid Option! Please Enter Correct Option");
+			}
+			
+			
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+3. Change 'Movie' class to abstract class and add additional abstract methods in 'Movie' class and define them in the child classes
+package abstractTask;
+
+import java.util.ArrayList;
+
+public abstract class Movie {
+	String movieName="Nick";
+	String genre;
+	float ratings;
+	
+	public Movie(String movieName, String genre, float ratings) {
+		this.movieName = movieName;
+		this.genre = genre;
+		this.ratings = ratings;
+	}
+	
+	public abstract void display();
+	
+}
+
+class TamilMovie extends Movie{
+	public TamilMovie(String movieName, String genre, float ratings) {
+		super(movieName, genre, ratings);
+	}
+	
+
+	public void display() {
+    System.out.println("Tamil Movie");
+		System.out.println("MovieName: "+this.movieName+"\nGenre: "+this.genre+"\nRatings :"+this.ratings);
+	}
+}
+
+class MalayalamMovie extends Movie{
+	public MalayalamMovie(String movieName, String genre, float ratings) {
+		super(movieName, genre, ratings);
+	}
+	
+
+	public void display() {
+    System.out.println("Malayalam Movie");
+		System.out.println("MovieName: "+this.movieName+"\nGenre: "+this.genre+"\nRatings :"+this.ratings);
+	}
+}
+
+
+
+
+
+4. Create 'Document' abstract class. Create subclasses like PDFDocument, TextDocument, ImageDocument, etc. 
+Create abstract methods and concrete methods and demonstrate how they work.
+
+
+package abstractTask;
+
+public abstract class Document {
+	abstract void copy();
+	abstract void paste();
+}
+
+class PDFDocument extends Document{
+	void copy() {
+		System.out.println("PDF document is copied...");
+	}
+	
+	void paste() {
+		System.out.println("PDF document is pasted...");
+	}
+	
+}
+
+class TextDocument extends Document{
+
+	void copy() {
+		System.out.println("Text document is copied");		
+	}
+
+	void paste() {
+		System.out.println("Text document is pasted...");
+	}
+	
+}
+
+
+class ImageDocument extends Document{
+
+	void copy() {
+		System.out.println("Image is copied...");
+	}
+
+	void paste() {
+		System.out.println("Image is pasted..");
+	}
+	
+}
+
+class VideoDocument extends Document{
+
+	void copy() {
+		System.out.println("Video file is copied...");
+	}
+
+	void paste() {
+		System.out.println("Video file is pasted...");
+	}
+	
+}
+
+
+

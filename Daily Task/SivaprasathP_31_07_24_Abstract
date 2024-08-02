@@ -481,7 +481,7 @@ package abstractTask;
 import java.util.ArrayList;
 
 public abstract class Movie {
-	String movieName="Nick";
+	String movieName;
 	String genre;
 	float ratings;
 	

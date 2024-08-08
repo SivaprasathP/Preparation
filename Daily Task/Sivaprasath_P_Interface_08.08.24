@@ -1,0 +1,195 @@
+#1Define an interface named Sortable with a method sort(). 
+Implement this interface in classes representing different sorting algorithms such as bubble sort, quicksort, and merge sort. 
+Allow the user to input an array, select a sorting algorithm, and display the sorted array.
+
+package interfaces;
+
+public interface Sortable {
+	void sort(int[] arr);
+}
+
+public class BubbleSort {
+	void sort(int[] arr) {
+		int n=arr.length;
+		
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+	}
+}
+
+
+public class MergeSort {
+	void sort(int[] arr) {
+		mergeSort(arr,0,arr.length-1);
+	}
+	public void mergeSort(int[] arr,int s,int e){
+        if(e-s==1){
+            return;
+        }
+
+        int mid=(s+e)/2;
+        mergeSort(arr,s,mid);
+        mergeSort(arr,mid,e);
+
+        merge(arr,s,mid,e);
+    }
+
+    public void merge(int[] arr,int s,int m,int e){
+        int[] mix=new int[e-s];
+
+        int i=s,j=m,k=0;
+
+        while(i<m && j<e){
+            if(arr[i]<arr[j]){
+                mix[k]=arr[i];
+                i++;
+            }else{
+                mix[k]=arr[j];
+                j++;
+            }
+            k++;
+        }
+
+        while(i<m){
+            mix[k]=arr[i];
+            i++;
+            k++;
+        }
+
+        while(j<e){
+            mix[k]=arr[j];
+            j++;
+            k++;
+        }
+
+        for(int x=0;x<mix.length;x++) {
+        	arr[s+x]=mix[x];
+        }
+    }
+
+}
+
+
+public class QuickSort {
+	void sort(int[] arr) {
+		quickSort(arr,0,arr.length-1);
+	}
+	
+	void quickSort(int[] arr,int l,int h){
+        if(l>=h){
+            return;
+        }
+
+        int s=l;
+        int e=h;
+        int m=(s+e)/2;
+        int pivot=arr[m];
+
+        while(s<=e){
+            while(arr[s]<pivot){
+                s++;
+            }
+
+            while(arr[e]>pivot){
+                e--;
+            }
+
+            if(s<=e){
+                int temp=arr[s];
+                arr[s]=arr[e];
+                arr[e]=temp;
+                s++;
+                e--;
+            }
+        }
+
+        quickSort(arr,l,e);
+        quickSort(arr,s,h);
+    }
+}
+
+import java.util.Arrays;
+
+public class Sort {
+	
+	public static void main(String[] args) {
+		int[] arr= {1,4,9,4,5};
+		BubbleSort obj1=new BubbleSort();
+		obj1.sort(arr);
+		System.out.println(Arrays.toString(arr));
+		
+		MergeSort obj2=new MergeSort();
+		obj2.sort(arr);
+		System.out.println(Arrays.toString(arr));
+		
+		QuickSort obj3=new QuickSort();
+		obj3.sort(arr);
+		System.out.println(Arrays.toString(arr));
+	}
+
+}
+
+
+
+
+
+
+
+#2 Define an interface named Playable with methods like play() , pause() , and stop() .
+Implement this interface in classes representing different types of music players such as MP3Player , CDPlayer , and StreamingPlayer . 
+Allow the user to control the playback of these players through the implemented interface.
+
+package interfaces;
+
+public interface Playable {
+	void play();
+	void pause();
+	void stop();
+}
+
+
+public class MP3Player {
+	void play() {
+		System.out.println("MP3 Player is playing..");
+	}
+	void pause() {
+		System.out.println("MP3 Player is paused..");
+	}
+	void stop() {
+		System.out.println("MP3 Player is stopped..");
+	}
+}
+
+
+public class CDPlayer {
+	void play() {
+		System.out.println("CD Player is playing..");
+	}
+	void pause() {
+		System.out.println("CD Player is paused..");
+	}
+	void stop() {
+		System.out.println("CD Player is stopped..");
+	}
+}
+
+
+public class StreamingPlayer {
+	void play() {
+		System.out.println("Streaming Player is playing..");
+	}
+	void pause() {
+		System.out.println("Streaming Player is paused..");
+	}
+	void stop() {
+		System.out.println("Streaming is stopped..");
+	}
+}
+
